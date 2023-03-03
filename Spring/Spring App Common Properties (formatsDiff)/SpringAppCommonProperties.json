@@ -1,0 +1,1321 @@
+"Spring-Common-Properties" [
+  "spring": {
+    "jta": {
+      "atomikos": {
+        "connectionfactory": {
+          "borrow-connection-timeout": "30 # Timeout, in seconds, for borrowing connections from the pool.",
+          "xa-properties": "# Vendor-specific XA properties.",
+          "xa-connection-factory-class-name": "# Vendor-specific implementation of XAConnectionFactory.",
+          "min-pool-size": "1 # Minimum size of the pool.",
+          "max-lifetime": "0 # Time, in seconds, that a connection can be pooled for before being destroyed. 0 denotes no limit.",
+          "ignore-session-transacted-flag": "true # Whether to ignore the transacted flag when creating session.",
+          "unique-resource-name": "jmsConnectionFactory # Unique name used to identify the resource during recovery.",
+          "reap-timeout": "0 # Reap timeout, in seconds, for borrowed connections. 0 denotes no limit.",
+          "max-pool-size": "1 # Maximum size of the pool.",
+          "local-transaction-mode": "false # Whether local transactions are desired.",
+          "max-idle-time": "60 # Time, in seconds, after which connections are cleaned up from the pool.",
+          "maintenance-interval": "60 # Time, in seconds, between runs of the pool's maintenance thread."
+        },
+        "properties": {
+          "max-timeout": "300000ms # Maximum timeout that can be allowed for transactions.",
+          "log-base-name": "tmlog # Transactions log file base name.",
+          "recovery": {
+            "delay": "10000ms # Delay between two recovery scans.",
+            "max-retries": "5 # Number of retry attempts to commit the transaction before throwing an exception.",
+            "forget-orphaned-log-entries-delay": "86400000ms # Delay after which recovery can cleanup pending ('orphaned') log entries.",
+            "retry-interval": "10000ms # Delay between retry attempts."
+          },
+          "serial-jta-transactions": "true # Whether sub-transactions should be joined when possible.",
+          "allow-sub-transactions": "true # Specify whether sub-transactions are allowed.",
+          "checkpoint-interval": "500 # Interval between checkpoints, expressed as the number of log writes between two checkpoints.",
+          "max-actives": "50 # Maximum number of active transactions.",
+          "transaction-manager-unique-name": "# The transaction manager's unique name.",
+          "force-shutdown-on-vm-exit": "false # Whether a VM shutdown should trigger forced shutdown of the transaction core.",
+          "default-jta-timeout": "10000ms # Default timeout for JTA transactions.",
+          "service": "# Transaction manager implementation that should be started.",
+          "default-max-wait-time-on-shutdown": "9223372036854775807 # How long should normal shutdown (no-force) wait for transactions to complete.",
+          "enable-logging": "true # Whether to enable disk logging.",
+          "log-base-dir": "# Directory in which the log files should be stored.",
+          "threaded-two-phase-commit": "false # Whether to use different (and concurrent) threads for two-phase commit on the participating resources."
+        },
+        "datasource": {
+          "max-lifetime": "0 # Time, in seconds, that a connection can be pooled for before being destroyed. 0 denotes no limit.",
+          "max-pool-size": "1 # Maximum size of the pool.",
+          "default-isolation-level": "# Default isolation level of connections provided by the pool.",
+          "xa-data-source-class-name": "# Vendor-specific implementation of XAConnectionFactory.",
+          "xa-properties": "# Vendor-specific XA properties.",
+          "max-idle-time": "60 # Time, in seconds, after which connections are cleaned up from the pool.",
+          "concurrent-connection-validation": "true # Whether to use concurrent connection validation.",
+          "unique-resource-name": "dataSource # Unique name used to identify the resource during recovery.",
+          "min-pool-size": "1 # Minimum size of the pool.",
+          "borrow-connection-timeout": "30 # Timeout, in seconds, for borrowing connections from the pool.",
+          "reap-timeout": "0 # Reap timeout, in seconds, for borrowed connections. 0 denotes no limit.",
+          "maintenance-interval": "60 # Time, in seconds, between runs of the pool's maintenance thread.",
+          "test-query": "# SQL query or statement used to validate a connection before returning it.",
+          "login-timeout": "0 # Timeout, in seconds, for establishing a database connection."
+        }
+      },
+      "bitronix": {
+        "connectionfactory": {
+          "use-tm-join": "true # Whether TMJOIN should be used when starting XAResources.",
+          "driver-properties": "# Properties that should be set on the underlying implementation.",
+          "max-pool-size": "0 # Maximum size of the pool. 0 denotes no limit.",
+          "class-name": "# Underlying implementation class name of the XA resource.",
+          "automatic-enlisting-enabled": "true # Whether resources should be enlisted and delisted automatically.",
+          "share-transaction-connections": "false #  Whether connections in the ACCESSIBLE state can be shared within the context of a transaction.",
+          "password": "# Password to use to connect to the JMS provider.",
+          "allow-local-transactions": "false # Whether the transaction manager should allow mixing XA and non-XA transactions.",
+          "defer-connection-release": "true # Whether the provider can run many transactions on the same connection and supports transaction interleaving.",
+          "disabled": "false # Whether this resource is disabled, meaning it's temporarily forbidden to acquire a connection from its pool.",
+          "acquisition-timeout": "30 # Timeout, in seconds, for acquiring connections from the pool.",
+          "acquire-increment": "1 # Number of connections to create when growing the pool.",
+          "cache-producers-consumers": "true # Whether producers and consumers should be cached.",
+          "two-pc-ordering-position": "1 # Position that this resource should take during two-phase commit (always first is Integer.MIN_VALUE, always last is Integer.MAX_VALUE).",
+          "min-pool-size": "0 # Minimum size of the pool.",
+          "acquisition-interval": "1 # Time, in seconds, to wait before trying to acquire a connection again after an invalid connection was acquired.",
+          "test-connections": "false # Whether connections should be tested when acquired from the pool.",
+          "max-idle-time": "60 # Time, in seconds, after which connections are cleaned up from the pool.",
+          "unique-name": "jmsConnectionFactory # Unique name used to identify the resource during recovery.",
+          "apply-transaction-timeout": "false # Whether the transaction timeout should be set on the XAResource when it is enlisted.",
+          "user": "# User to use to connect to the JMS provider.",
+          "ignore-recovery-failures": "false # Whether recovery failures should be ignored."
+        },
+        "properties": {
+          "default-transaction-timeout": "60 # Default transaction timeout, in seconds.",
+          "log-part2-filename": "btm2.tlog # Name of the second fragment of the journal.",
+          "graceful-shutdown-interval": "60 # Maximum amount of seconds the TM waits for transactions to get done before aborting them at shutdown time.",
+          "resource-configuration-filename": "# ResourceLoader configuration file name.",
+          "allow-multiple-lrc": "false # Whether to allow multiple LRC resources to be enlisted into the same transaction.",
+          "skip-corrupted-logs": "false # Skip corrupted transactions log entries.",
+          "journal": "disk # Name of the journal. Can be 'disk', 'null', or a class name.",
+          "current-node-only-recovery": "true # Whether to recover only the current node.",
+          "jndi-user-transaction-name": "# JNDI name of the UserTransaction.",
+          "background-recovery-interval-seconds": "60 # Interval in seconds at which to run the recovery process in the background.",
+          "asynchronous2-pc": "false # Whether to enable asynchronously execution of two phase commit.",
+          "debug-zero-resource-transaction": "false # Whether to log the creation and commit call stacks of transactions executed without a single enlisted resource.",
+          "max-log-size-in-mb": "2 # Maximum size in megabytes of the journal fragments.",
+          "log-part1-filename": "btm1.tlog # Name of the first fragment of the journal.",
+          "filter-log-status": "false # Whether to enable filtering of logs so that only mandatory logs are written.",
+          "disable-jmx": "false # Whether to enable JMX support.",
+          "server-id": "# ASCII ID that must uniquely identify this TM instance. Defaults to the machine's IP address.",
+          "warn-about-zero-resource-transaction": "true # Whether to log a warning for transactions executed without a single enlisted resource.",
+          "forced-write-enabled": "true # Whether logs are forced to disk.",
+          "jndi-transaction-synchronization-registry-name": "# JNDI name of the TransactionSynchronizationRegistry.",
+          "exception-analyzer": "# Set the fully qualified name of the exception analyzer implementation to use.",
+          "force-batching-enabled": "true #  Whether disk forces are batched."
+        },
+        "datasource": {
+          "acquisition-interval": "1 # Time, in seconds, to wait before trying to acquire a connection again after an invalid connection was acquired.",
+          "enable-jdbc4-connection-test": "false # Whether Connection.isValid() is called when acquiring a connection from the pool.",
+          "disabled": "false # Whether this resource is disabled, meaning it's temporarily forbidden to acquire a connection from its pool.",
+          "apply-transaction-timeout": "false # Whether the transaction timeout should be set on the XAResource when it is enlisted.",
+          "class-name": "# Underlying implementation class name of the XA resource.",
+          "unique-name": "dataSource # Unique name used to identify the resource during recovery.",
+          "two-pc-ordering-position": "1 # Position that this resource should take during two-phase commit (always first is Integer.MIN_VALUE, and always last is Integer.MAX_VALUE).",
+          "driver-properties": "# Properties that should be set on the underlying implementation.",
+          "acquisition-timeout": "30 # Timeout, in seconds, for acquiring connections from the pool.",
+          "automatic-enlisting-enabled": "true # Whether resources should be enlisted and delisted automatically.",
+          "min-pool-size": "0 # Minimum size of the pool.",
+          "ignore-recovery-failures": "false # Whether recovery failures should be ignored.",
+          "prepared-statement-cache-size": "0 # Target size of the prepared statement cache. 0 disables the cache.",
+          "max-idle-time": "60 # Time, in seconds, after which connections are cleaned up from the pool.",
+          "cursor-holdability": "# Default cursor holdability for connections.",
+          "max-pool-size": "0 # Maximum size of the pool. 0 denotes no limit.",
+          "local-auto-commit": "# Default auto-commit mode for local transactions.",
+          "allow-local-transactions": "false # Whether the transaction manager should allow mixing XA and non-XA transactions.",
+          "acquire-increment": "1 # Number of connections to create when growing the pool.",
+          "test-query": "# SQL query or statement used to validate a connection before returning it.",
+          "use-tm-join": "true # Whether TMJOIN should be used when starting XAResources.",
+          "isolation-level": "# Default isolation level for connections.",
+          "defer-connection-release": "true # Whether the database can run many transactions on the same connection and supports transaction interleaving.",
+          "share-transaction-connections": "false #  Whether connections in the ACCESSIBLE state can be shared within the context of a transaction.",
+          "login-timeout": "# Timeout, in seconds, for establishing a database connection."
+        }
+      },
+      "enabled": "true # Whether to enable JTA support.",
+      "transaction-manager-id": "# Transaction manager unique identifier.",
+      "log-dir": "# Transaction logs directory."
+    },
+    "datasource": {
+      "data": "# Data (DML) script resource references.",
+      "jndi-name": "# JNDI location of the datasource. Class, url, username & password are ignored when set.",
+      "schema-password": "# Password of the database to execute DDL scripts (if different).",
+      "type": "# Fully qualified name of the connection pool implementation to use. By default, it is auto-detected from the classpath.",
+      "continue-on-error": "false # Whether to stop if an error occurs while initializing the database.",
+      "dbcp2": {
+        "*": "# Commons DBCP2 specific settings"
+      },
+      "sql-script-encoding": "# SQL scripts encoding.",
+      "separator": "; # Statement separator in SQL initialization scripts.",
+      "url": "# JDBC URL of the database.",
+      "schema-username": "# Username of the database to execute DDL scripts (if different).",
+      "xa": {
+        "properties": "# Properties to pass to the XA data source.",
+        "data-source-class-name": "# XA datasource fully qualified name."
+      },
+      "data-password": "# Password of the database to execute DML scripts (if different).",
+      "password": "# Login password of the database.",
+      "data-username": "# Username of the database to execute DML scripts (if different).",
+      "jmx-enabled": "false # Whether to enable JMX support (if provided by the underlying pool).",
+      "initialization-mode": "embedded # Initialize the datasource with available DDL and DML scripts.",
+      "tomcat": {
+        "*": "# Tomcat datasource specific settings"
+      },
+      "name": "# Name of the datasource. Default to \"testdb\" when using an embedded database.",
+      "username": "# Login username of the database.",
+      "platform": "all # Platform to use in the DDL or DML scripts (such as schema-${platform}.sql or data-${platform}.sql).",
+      "driver-class-name": "# Fully qualified name of the JDBC driver. Auto-detected based on the URL by default.",
+      "generate-unique-name": "false # Whether to generate a random datasource name.",
+      "schema": "# Schema (DDL) script resource references.",
+      "hikari": {
+        "*": "# Hikari specific settings"
+      }
+    },
+    "elasticsearch": {
+      "jest": {
+        "multi-threaded": "true # Whether to enable connection requests from multiple execution threads.",
+        "proxy": {
+          "host": "# Proxy host the HTTP client should use.",
+          "port": "# Proxy port the HTTP client should use."
+        },
+        "read-timeout": "3s # Read timeout.",
+        "uris": "http://localhost:9200 # Comma-separated list of the Elasticsearch instances to use.",
+        "username": "# Login username.",
+        "password": "# Login password.",
+        "connection-timeout": "3s # Connection timeout."
+      },
+      "rest": {
+        "uris": "http://localhost:9200 # Comma-separated list of the Elasticsearch instances to use.",
+        "username": "# Credentials username.",
+        "password": "# Credentials password."
+      }
+    },
+    "http": {
+      "encoding": {
+        "mapping": "# Locale in which to encode mapping.",
+        "force": "# Whether to force the encoding to the configured charset on HTTP requests and responses.",
+        "force-response": "# Whether to force the encoding to the configured charset on HTTP responses.",
+        "force-request": "# Whether to force the encoding to the configured charset on HTTP requests. Defaults to true when \"force\" has not been specified.",
+        "enabled": "true # Whether to enable http encoding support.",
+        "charset": "UTF-8 # Charset of HTTP requests and responses. Added to the \"Content-Type\" header if not set explicitly."
+      },
+      "converters": {
+        "preferred-json-mapper": "# Preferred JSON mapper to use for HTTP message conversion. By default, auto-detected according to the environment."
+      },
+      "log-request-details": "false # Whether logging of (potentially sensitive) request details at DEBUG and TRACE level is allowed."
+    },
+    "data": {
+      "cassandra": {
+        "fetch-size": "# Queries default fetch size.",
+        "port": "# Port of the Cassandra server.",
+        "pool": {
+          "pool-timeout": "5000ms # Pool timeout when trying to acquire a connection from a host's pool.",
+          "heartbeat-interval": "30s # Heartbeat interval after which a message is sent on an idle connection to make sure it's still alive. If a duration suffix is not specified, seconds will be used.",
+          "idle-timeout": "120s # Idle timeout before an idle connection is removed. If a duration suffix is not specified, seconds will be used.",
+          "max-queue-size": "256 # Maximum number of requests that get queued if no connection is available."
+        },
+        "serial-consistency-level": "# Queries serial consistency level.",
+        "read-timeout": "# Socket option: read time out.",
+        "contact-points": "localhost # Cluster node addresses.",
+        "ssl": "false # Enable SSL support.",
+        "cluster-name": "# Name of the Cassandra cluster.",
+        "repositories": {
+          "type": "auto # Type of Cassandra repositories to enable."
+        },
+        "jmx-enabled": "false # Whether to enable JMX reporting.",
+        "schema-action": "none # Schema action to take at startup.",
+        "connect-timeout": "# Socket option: connection time out.",
+        "keyspace-name": "# Keyspace name to use.",
+        "password": "# Login password of the server.",
+        "username": "# Login user of the server.",
+        "compression": "none # Compression supported by the Cassandra binary protocol.",
+        "consistency-level": "# Queries consistency level."
+      },
+      "couchbase": {
+        "repositories": {
+          "type": "auto # Type of Couchbase repositories to enable."
+        },
+        "consistency": "read-your-own-writes # Consistency to apply by default on generated queries.",
+        "auto-index": "false # Automatically create views and indexes."
+      },
+      "web": {
+        "pageable": {
+          "page-parameter": "page # Page index parameter name.",
+          "qualifier-delimiter": "_ # Delimiter to be used between the qualifier and the actual page number and size properties.",
+          "size-parameter": "size # Page size parameter name.",
+          "default-page-size": "20 # Default page size.",
+          "one-indexed-parameters": "false # Whether to expose and assume 1-based page number indexes.",
+          "max-page-size": "2000 # Maximum page size to be accepted.",
+          "prefix": "# General prefix to be prepended to the page number and page size parameters."
+        },
+        "sort": {
+          "sort-parameter": "sort # Sort parameter name."
+        }
+      },
+      "solr": {
+        "host": "http://127.0.0.1:8983/solr # Solr host. Ignored if \"zk-host\" is set.",
+        "zk-host": "# ZooKeeper host address in the form HOST:PORT.",
+        "repositories": {
+          "enabled": "true # Whether to enable Solr repositories."
+        }
+      },
+      "mongodb": {
+        "grid-fs-database": "# GridFS database name.",
+        "field-naming-strategy": "# Fully qualified name of the FieldNamingStrategy to use.",
+        "database": "# Database name.",
+        "username": "# Login user of the mongo server. Cannot be set with URI.",
+        "authentication-database": "# Authentication database name.",
+        "repositories": {
+          "type": "auto # Type of Mongo repositories to enable."
+        },
+        "host": "# Mongo server host. Cannot be set with URI.",
+        "uri": "mongodb://localhost/test # Mongo database URI. Cannot be set with host, port and credentials.",
+        "password": "# Login password of the mongo server. Cannot be set with URI.",
+        "port": "# Mongo server port. Cannot be set with URI."
+      },
+      "elasticsearch": {
+        "cluster-name": "elasticsearch # Elasticsearch cluster name.",
+        "cluster-nodes": "# Comma-separated list of cluster node addresses.",
+        "repositories": {
+          "enabled": "true # Whether to enable Elasticsearch repositories."
+        },
+        "properties": {
+          "*": "# Additional properties used to configure the client."
+        }
+      },
+      "rest": {
+        "base-path": "# Base path to be used by Spring Data REST to expose repository resources.",
+        "max-page-size": "# Maximum size of pages.",
+        "limit-param-name": "# Name of the URL query string parameter that indicates how many results to return at once.",
+        "enable-enum-translation": "# Whether to enable enum value translation through the Spring Data REST default resource bundle.",
+        "detection-strategy": "default # Strategy to use to determine which repositories get exposed.",
+        "return-body-on-create": "# Whether to return a response body after creating an entity.",
+        "default-media-type": "# Content type to use as a default when none is specified.",
+        "default-page-size": "# Default size of pages.",
+        "return-body-on-update": "# Whether to return a response body after updating an entity.",
+        "sort-param-name": "# Name of the URL query string parameter that indicates what direction to sort results.",
+        "page-param-name": "# Name of the URL query string parameter that indicates what page to return."
+      },
+      "neo4j": {
+        "uri": "# URI used by the driver. Auto-detected by default.",
+        "open-in-view": "true # Register OpenSessionInViewInterceptor. Binds a Neo4j Session to the thread for the entire processing of the request.",
+        "auto-index": "none # Auto index mode.",
+        "repositories": {
+          "enabled": "true # Whether to enable Neo4j repositories."
+        },
+        "username": "# Login user of the server.",
+        "password": "# Login password of the server.",
+        "embedded": {
+          "enabled": "true # Whether to enable embedded mode if the embedded driver is available."
+        }
+      },
+      "redis": {
+        "repositories": {
+          "enabled": "true # Whether to enable Redis repositories."
+        }
+      },
+      "ldap": {
+        "repositories": {
+          "enabled": "true # Whether to enable LDAP repositories."
+        }
+      },
+      "jpa": {
+        "repositories": {
+          "bootstrap-mode": "default # Bootstrap mode for JPA repositories.",
+          "enabled": "true # Whether to enable JPA repositories."
+        }
+      },
+      "jdbc": {
+        "repositories": {
+          "enabled": "true # Whether to enable JDBC repositories."
+        }
+      }
+    },
+    "resources": {
+      "chain": {
+        "strategy": {
+          "fixed": {
+            "version": "# Version string to use for the fixed Version Strategy.",
+            "paths": "/** # Comma-separated list of patterns to apply to the fixed Version Strategy.",
+            "enabled": "false # Whether to enable the fixed Version Strategy."
+          },
+          "content": {
+            "paths": "/** # Comma-separated list of patterns to apply to the content Version Strategy.",
+            "enabled": "false # Whether to enable the content Version Strategy."
+          }
+        },
+        "cache": "true # Whether to enable caching in the Resource chain.",
+        "enabled": "# Whether to enable the Spring Resource Handling chain. By default, disabled unless at least one strategy has been enabled.",
+        "html-application-cache": "false # Whether to enable HTML5 application cache manifest rewriting.",
+        "compressed": "false # Whether to enable resolution of already compressed resources (gzip, brotli)."
+      },
+      "static-locations": "classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/ # Locations of static resources.",
+      "add-mappings": "true # Whether to enable default resource handling.",
+      "cache": {
+        "cachecontrol": {
+          "stale-while-revalidate": "# Maximum time the response can be served after it becomes stale, in seconds if no duration suffix is not specified.",
+          "no-transform": "# Indicate intermediaries (caches and others) that they should not transform the response content.",
+          "must-revalidate": "# Indicate that once it has become stale, a cache must not use the response without re-validating it with the server.",
+          "cache-private": "# Indicate that the response message is intended for a single user and must not be stored by a shared cache.",
+          "stale-if-error": "# Maximum time the response may be used when errors are encountered, in seconds if no duration suffix is not specified.",
+          "s-max-age": "# Maximum time the response should be cached by shared caches, in seconds if no duration suffix is not specified.",
+          "no-cache": "# Indicate that the cached response can be reused only if re-validated with the server.",
+          "max-age": "# Maximum time the response should be cached, in seconds if no duration suffix is not specified.",
+          "proxy-revalidate": "# Same meaning as the \"must-revalidate\" directive, except that it does not apply to private caches.",
+          "no-store": "# Indicate to not cache the response in any case.",
+          "cache-public": "# Indicate that any cache may store the response."
+        },
+        "period": "# Cache period for the resources served by the resource handler. If a duration suffix is not specified, seconds will be used."
+      }
+    },
+    "flyway": {
+      "url": "# JDBC url of the database to migrate. If not set, the primary configured data source is used.",
+      "check-location": "true # Whether to check that migration scripts location exists.",
+      "baseline-on-migrate": "false # Whether to automatically call baseline when migrating a non-empty schema.",
+      "encoding": "UTF-8 # Encoding of SQL migrations.",
+      "group": "false # Whether to group all pending migrations together in the same transaction when applying them.",
+      "locations": "classpath:db/migration # Locations of migrations scripts. Can contain the special \"{vendor}\" placeholder to use vendor-specific locations.",
+      "out-of-order": "false # Whether to allow migrations to be run out of order.",
+      "init-sqls": "# SQL statements to execute to initialize a connection immediately after obtaining it.",
+      "skip-default-resolvers": "false # Whether to skip default resolvers. If true, only custom resolvers are used.",
+      "installed-by": "# Username recorded in the schema history table as having applied the migration.",
+      "skip-default-callbacks": "false # Whether to skip default callbacks. If true, only custom callbacks are used.",
+      "sql-migration-suffixes": ".sql # File name suffix for SQL migrations.",
+      "baseline-description": "<< Flyway Baseline >> # Description to tag an existing schema with when applying a baseline.",
+      "sql-migration-separator": "__ # File name separator for SQL migrations.",
+      "sql-migration-prefix": "V # File name prefix for SQL migrations.",
+      "enabled": "true # Whether to enable flyway.",
+      "ignore-pending-migrations": "false # Whether to ignore pending migrations when reading the schema history table.",
+      "ignore-missing-migrations": "false # Whether to ignore missing migrations when reading the schema history table.",
+      "placeholder-suffix": "} # Suffix of placeholders in migration scripts.",
+      "placeholder-prefix": "${ # Prefix of placeholders in migration scripts.",
+      "password": "# Login password of the database to migrate.",
+      "clean-on-validation-error": "false # Whether to automatically call clean when a validation error occurs.",
+      "ignore-future-migrations": "true # Whether to ignore future migrations when reading the schema history table.",
+      "user": "# Login user of the database to migrate.",
+      "target": "# Target version up to which migrations should be considered.",
+      "repeatable-sql-migration-prefix": "R # File name prefix for repeatable SQL migrations.",
+      "clean-disabled": "false # Whether to disable cleaning of the database.",
+      "table": "flyway_schema_history # Name of the schema schema history table that will be used by Flyway.",
+      "ignore-ignored-migrations": "false # Whether to ignore ignored migrations when reading the schema history table.",
+      "mixed": "false # Whether to allow mixing transactional and non-transactional statements within the same migration.",
+      "placeholders": "# Placeholders and their replacements to apply to sql migration scripts.",
+      "baseline-version": "1 # Version to tag an existing schema with when executing baseline.",
+      "connect-retries": "0 # Maximum number of retries when attempting to connect to the database.",
+      "schemas": "# Scheme names managed by Flyway (case-sensitive).",
+      "placeholder-replacement": "true # Perform placeholder replacement in migration scripts.",
+      "validate-on-migrate": "true # Whether to automatically call validate when performing a migration."
+    },
+    "gson": {
+      "lenient": "# Whether to be lenient about parsing JSON that doesn't conform to RFC 4627.",
+      "disable-html-escaping": "# Whether to disable the escaping of HTML characters such as '<', '>', etc.",
+      "exclude-fields-without-expose-annotation": "# Whether to exclude all fields from consideration for serialization or deserialization that do not have the \"Expose\" annotation.",
+      "generate-non-executable-json": "# Whether to generate non executable JSON by prefixing the output with some special text.",
+      "enable-complex-map-key-serialization": "# Whether to enable serialization of complex map keys (i.e. non-primitives).",
+      "disable-inner-class-serialization": "# Whether to exclude inner classes during serialization.",
+      "date-format": "# Format to use when serializing Date objects.",
+      "long-serialization-policy": "# Serialization policy for Long and long types.",
+      "pretty-printing": "# Whether to output serialized JSON that fits in a page for pretty printing.",
+      "field-naming-policy": "# Naming policy that should be applied to an object's field during serialization and deserialization.",
+      "serialize-nulls": "# Whether to serialize null fields."
+    },
+    "thymeleaf": {
+      "excluded-view-names": "# Comma-separated list of view names (patterns allowed) that should be excluded from resolution.",
+      "prefix": "classpath:/templates/ # Prefix that gets prepended to view names when building a URL.",
+      "servlet": {
+        "content-type": "text/html # Content-Type value written to HTTP responses.",
+        "produce-partial-output-while-processing": "true # Whether Thymeleaf should start writing partial output as soon as possible or buffer until template processing is finished."
+      },
+      "template-resolver-order": "# Order of the template resolver in the chain.",
+      "encoding": "UTF-8 # Template files encoding.",
+      "reactive": {
+        "chunked-mode-view-names": "# Comma-separated list of view names (patterns allowed) that should be the only ones executed in CHUNKED mode when a max chunk size is set.",
+        "media-types": "# Media types supported by the view technology.",
+        "max-chunk-size": "0B # Maximum size of data buffers used for writing to the response.",
+        "full-mode-view-names": "# Comma-separated list of view names (patterns allowed) that should be executed in FULL mode even if a max chunk size is set."
+      },
+      "cache": "true # Whether to enable template caching.",
+      "enabled": "true # Whether to enable Thymeleaf view resolution for Web frameworks.",
+      "view-names": "# Comma-separated list of view names (patterns allowed) that can be resolved.",
+      "check-template-location": "true # Whether to check that the templates location exists.",
+      "check-template": "true # Whether to check that the template exists before rendering it.",
+      "render-hidden-markers-before-checkboxes": "false # Whether hidden form inputs acting as markers for checkboxes should be rendered before the checkbox element itself.",
+      "enable-spring-el-compiler": "false # Enable the SpringEL compiler in SpringEL expressions.",
+      "mode": "HTML # Template mode to be applied to templates. See also Thymeleaf's TemplateMode enum.",
+      "suffix": ".html # Suffix that gets appended to view names when building a URL."
+    },
+    "artemis": {
+      "embedded": {
+        "persistent": "false # Whether to enable persistent store.",
+        "data-directory": "# Journal file directory. Not necessary if persistence is turned off.",
+        "topics": "# Comma-separated list of topics to create on startup.",
+        "server-id": "# Server ID. By default, an auto-incremented counter is used.",
+        "cluster-password": "# Cluster password. Randomly generated on startup by default.",
+        "queues": "# Comma-separated list of queues to create on startup.",
+        "enabled": "true # Whether to enable embedded mode if the Artemis server APIs are available."
+      },
+      "pool": {
+        "time-between-expiration-check": "-1ms # Time to sleep between runs of the idle connection eviction thread. When negative, no idle connection eviction thread runs.",
+        "block-if-full": "true # Whether to block when a connection is requested and the pool is full. Set it to false to throw a \"JMSException\" instead.",
+        "max-connections": "1 # Maximum number of pooled connections.",
+        "enabled": "false # Whether a JmsPoolConnectionFactory should be created, instead of a regular ConnectionFactory.",
+        "idle-timeout": "30s # Connection idle timeout.",
+        "block-if-full-timeout": "-1ms # Blocking period before throwing an exception if the pool is still full.",
+        "max-sessions-per-connection": "500 # Maximum number of pooled sessions per connection in the pool.",
+        "use-anonymous-producers": "true # Whether to use only one anonymous \"MessageProducer\" instance. Set it to false to create one \"MessageProducer\" every time one is required."
+      },
+      "port": "61616 # Artemis broker port.",
+      "mode": "# Artemis deployment mode, auto-detected by default.",
+      "user": "# Login user of the broker.",
+      "password": "# Login password of the broker.",
+      "host": "localhost # Artemis broker host."
+    },
+    "application": {
+      "name": "# Application name.",
+      "admin": {
+        "jmx-name": "org.springframework.boot:type=Admin,name=SpringApplication # JMX name of the application admin MBean.",
+        "enabled": "false # Whether to enable admin features for the application."
+      }
+    },
+    "mail": {
+      "protocol": "smtp # Protocol used by the SMTP server.",
+      "password": "# Login password of the SMTP server.",
+      "properties": {
+        "*": "# Additional JavaMail Session properties."
+      },
+      "username": "# Login user of the SMTP server.",
+      "default-encoding": "UTF-8 # Default MimeMessage encoding.",
+      "port": "# SMTP server port.",
+      "jndi-name": "# Session JNDI name. When set, takes precedence over other Session settings.",
+      "host": "# SMTP server host. For instance, `smtp.example.com`.",
+      "test-connection": "false # Whether to test that the mail server is available on startup."
+    },
+    "hateoas": {
+      "use-hal-as-default-json-media-type": "true # Whether application/hal+json responses should be sent to requests that accept application/json."
+    },
+    "session": {
+      "timeout": "# Session timeout. If a duration suffix is not specified, seconds will be used.",
+      "redis": {
+        "flush-mode": "on-save # Sessions flush mode.",
+        "namespace": "spring:session # Namespace for keys used to store sessions.",
+        "cleanup-cron": "0 * * * * * # Cron expression for expired session cleanup job."
+      },
+      "mongodb": {
+        "collection-name": "sessions # Collection name used to store sessions."
+      },
+      "jdbc": {
+        "schema": "classpath:org/springframework/session/jdbc/schema-@@platform@@.sql # Path to the SQL file to use to initialize the database schema.",
+        "initialize-schema": "embedded # Database schema initialization mode.",
+        "table-name": "SPRING_SESSION # Name of the database table used to store sessions.",
+        "cleanup-cron": "0 * * * * * # Cron expression for expired session cleanup job."
+      },
+      "servlet": {
+        "filter-dispatcher-types": "async,error,request # Session repository filter dispatcher types.",
+        "filter-order": "-2147483598 # Session repository filter order."
+      },
+      "hazelcast": {
+        "map-name": "spring:session:sessions # Name of the map used to store sessions.",
+        "flush-mode": "on-save # Sessions flush mode."
+      },
+      "store-type": "# Session store type."
+    },
+    "mustache": {
+      "expose-spring-macro-helpers": "true # Whether to expose a RequestContext for use by Spring's macro library, under the name \"springMacroRequestContext\".",
+      "allow-session-override": "false # Whether HttpSession attributes are allowed to override (hide) controller generated model attributes of the same name.",
+      "view-names": "# White list of view names that can be resolved.",
+      "enabled": "true # Whether to enable MVC view resolution for this technology.",
+      "request-context-attribute": "# Name of the RequestContext attribute for all views.",
+      "expose-request-attributes": "false # Whether all request attributes should be added to the model prior to merging with the template.",
+      "expose-session-attributes": "false # Whether all HttpSession attributes should be added to the model prior to merging with the template.",
+      "charset": "UTF-8 # Template encoding.",
+      "suffix": ".mustache # Suffix to apply to template names.",
+      "cache": "false # Whether to enable template caching.",
+      "content-type": "text/html # Content-Type value.",
+      "check-template-location": "true # Whether to check that the templates location exists.",
+      "allow-request-override": "false # Whether HttpServletRequest attributes are allowed to override (hide) controller generated model attributes of the same name.",
+      "prefix": "classpath:/templates/ # Prefix to apply to template names."
+    },
+    "redis": {
+      "lettuce": {
+        "pool": {
+          "max-idle": "8 # Maximum number of \"idle\" connections in the pool. Use a negative value to indicate an unlimited number of idle connections.",
+          "max-wait": "-1ms # Maximum amount of time a connection allocation should block before throwing an exception when the pool is exhausted. Use a negative value to block indefinitely.",
+          "min-idle": "0 # Target for the minimum number of idle connections to maintain in the pool. This setting only has an effect if it is positive.",
+          "max-active": "8 # Maximum number of connections that can be allocated by the pool at a given time. Use a negative value for no limit."
+        },
+        "shutdown-timeout": "100ms # Shutdown timeout."
+      },
+      "database": "0 # Database index used by the connection factory.",
+      "cluster": {
+        "nodes": "# Comma-separated list of \"host:port\" pairs to bootstrap from.",
+        "max-redirects": "# Maximum number of redirects to follow when executing commands across the cluster."
+      },
+      "url": "# Connection URL. Overrides host, port, and password. User is ignored. Example: redis://user:password@example.com:6379",
+      "jedis": {
+        "pool": {
+          "min-idle": "0 # Target for the minimum number of idle connections to maintain in the pool. This setting only has an effect if it is positive.",
+          "max-active": "8 # Maximum number of connections that can be allocated by the pool at a given time. Use a negative value for no limit.",
+          "max-wait": "-1ms # Maximum amount of time a connection allocation should block before throwing an exception when the pool is exhausted. Use a negative value to block indefinitely.",
+          "max-idle": "8 # Maximum number of \"idle\" connections in the pool. Use a negative value to indicate an unlimited number of idle connections."
+        }
+      },
+      "sentinel": {
+        "nodes": "# Comma-separated list of \"host:port\" pairs.",
+        "master": "# Name of the Redis server."
+      },
+      "password": "# Login password of the redis server.",
+      "timeout": "# Connection timeout.",
+      "port": "6379 # Redis server port.",
+      "host": "localhost # Redis server host.",
+      "ssl": "false # Whether to enable SSL support."
+    },
+    "liquibase": {
+      "test-rollback-on-update": "false # Whether rollback should be tested before update is performed.",
+      "database-change-log-lock-table": "DATABASECHANGELOGLOCK # Name of table to use for tracking concurrent Liquibase usage.",
+      "change-log": "classpath:/db/changelog/db.changelog-master.yaml # Change log configuration path.",
+      "liquibase-tablespace": "# Tablespace to use for Liquibase objects.",
+      "parameters": {
+        "*": "# Change log parameters."
+      },
+      "database-change-log-table": "DATABASECHANGELOG # Name of table to use for tracking change history.",
+      "default-schema": "# Default database schema.",
+      "password": "# Login password of the database to migrate.",
+      "drop-first": "false # Whether to first drop the database schema.",
+      "user": "# Login user of the database to migrate.",
+      "rollback-file": "# File to which rollback SQL is written when an update is performed.",
+      "labels": "# Comma-separated list of runtime labels to use.",
+      "url": "# JDBC URL of the database to migrate. If not set, the primary configured data source is used.",
+      "enabled": "true # Whether to enable Liquibase support.",
+      "contexts": "# Comma-separated list of runtime contexts to use.",
+      "liquibase-schema": "# Schema to use for Liquibase objects."
+    },
+    "info": {
+      "git": {
+        "location": "classpath:git.properties # Location of the generated git.properties file.",
+        "encoding": "UTF-8 # File encoding."
+      },
+      "build": {
+        "encoding": "UTF-8 # File encoding.",
+        "location": "classpath:META-INF/build-info.properties # Location of the generated build-info.properties file."
+      }
+    },
+    "kafka": {
+      "consumer": {
+        "auto-commit-interval": "# Frequency with which the consumer offsets are auto-committed to Kafka if 'enable.auto.commit' is set to true.",
+        "client-id": "# ID to pass to the server when making requests. Used for server-side logging.",
+        "bootstrap-servers": "# Comma-delimited list of host:port pairs to use for establishing the initial connections to the Kafka cluster. Overrides the global property, for consumers.",
+        "fetch-max-wait": "# Maximum amount ",
+        "enable-auto-commit": "# Whether the consumer's offset is periodically committed in the background.",
+        "auto-offset-reset": "# What to do when there is no initial offset in Kafka or if the current offset no longer exists on the server."
+      },
+      "bootstrap-servers": "# Comma-delimited list of host:port pairs to use for establishing the initial connections to the Kafka cluster. Applies to all components unless overridden.",
+      "admin": {
+        "ssl": {
+          "trust-store-password": "# Store password for the trust store file.",
+          "key-store-password": "# Store password for the key store file.",
+          "trust-store-type": "# Type of the trust store.",
+          "key-password": "# Password of the private key in the key store file.",
+          "key-store-type": "# Type of the key store.",
+          "protocol": "# SSL protocol to use.",
+          "key-store-location": "# Location of the key store file.",
+          "trust-store-location": "# Location of the trust store file."
+        },
+        "properties": {
+          "*": "# Additional admin-specific properties used to configure the client."
+        },
+        "client-id": "# ID to pass to the server when making requests. Used for server-side logging.",
+        "fail-fast": "false # Whether to fail fast if the broker is not available on startup."
+      },
+      "client-id": "# ID to pass to the server when making requests. Used for server-side logging."
+    },
+    "ldap": {
+      "base": "# Base suffix from which all operations should originate.",
+      "base-environment": {
+        "*": "# LDAP specification settings."
+      },
+      "embedded": {
+        "credential": {
+          "password": "# Embedded LDAP password.",
+          "username": "# Embedded LDAP username."
+        },
+        "ldif": "classpath:schema.ldif # Schema (LDIF) script resource reference.",
+        "validation": {
+          "schema": "# Path to the custom schema.",
+          "enabled": "true # Whether to enable LDAP schema validation."
+        },
+        "base-dn": "# List of base DNs.",
+        "port": "0 # Embedded LDAP port."
+      },
+      "anonymous-read-only": "false # Whether read-only operations should use an anonymous environment.",
+      "username": "# Login username of the server.",
+      "password": "# Login password of the server.",
+      "urls": "# LDAP URLs of the server."
+    },
+    "main": {
+      "sources": "# Sources (class names, package names, or XML resource locations) to include in the ApplicationContext.",
+      "banner-mode": "console # Mode used to display the banner when the application runs.",
+      "allow-bean-definition-overriding": "false # Whether bean definition overriding, by registering a definition with the same name as an existing definition, is allowed.",
+      "web-application-type": "# Flag to explicitly request a specific type of web application. If not set, auto-detected based on the classpath.",
+      "register-shutdown-hook": "true # Whether the application should have a shutdown hook registered."
+    },
+    "jpa": {
+      "properties": {
+        "*": "# Additional native properties to set on the JPA provider."
+      },
+      "hibernate": {
+        "ddl-auto": "# DDL mode. This is actually a shortcut for the \"hibernate.hbm2ddl.auto\" property. Defaults to \"create-drop\" when using an embedded database and no schema manager was detected. Otherwise, defaults to \"none\".",
+        "naming": {
+          "physical-strategy": "# Fully qualified name of the physical naming strategy.",
+          "implicit-strategy": "# Fully qualified name of the implicit naming strategy."
+        },
+        "use-new-id-generator-mappings": "# Whether to use Hibernate's newer IdentifierGenerator for AUTO, TABLE and SEQUENCE."
+      },
+      "mapping-resources": "# Mapping resources (equivalent to \"mapping-file\" entries in persistence.xml).",
+      "database": "# Target database to operate on, auto-detected by default. Can be alternatively set using the \"databasePlatform\" property.",
+      "generate-ddl": "false # Whether to initialize the schema on startup.",
+      "open-in-view": "true # Register OpenEntityManagerInViewInterceptor. Binds a JPA EntityManager to the thread for the entire processing of the request.",
+      "show-sql": "false # Whether to enable logging of SQL statements.",
+      "database-platform": "# Name of the target database to operate on, auto-detected by default. Can be alternatively set using the \"Database\" enum."
+    },
+    "quartz": {
+      "auto-startup": "true # Whether to automatically start the scheduler after initialization.",
+      "wait-for-jobs-to-complete-on-shutdown": "false # Whether to wait for running jobs to complete on shutdown.",
+      "properties": {
+        "*": "# Additional Quartz Scheduler properties."
+      },
+      "scheduler-name": "quartzScheduler # Name of the scheduler.",
+      "jdbc": {
+        "initialize-schema": "embedded # Database schema initialization mode.",
+        "comment-prefix": "-- # Prefix for single-line comments in SQL initialization scripts.",
+        "schema": "classpath:org/quartz/impl/jdbcjobstore/tables_@@platform@@.sql # Path to the SQL file to use to initialize the database schema."
+      },
+      "startup-delay": "0s # Delay after which the scheduler is started once initialization completes.",
+      "job-store-type": "memory # Quartz job store type.",
+      "overwrite-existing-jobs": "false # Whether configured jobs should overwrite existing job definitions."
+    },
+    "mvc": {
+      "servlet": {
+        "path": "/ # Path of the dispatcher servlet.",
+        "load-on-startup": "-1 # Load on startup priority of the dispatcher servlet."
+      },
+      "pathmatch": {
+        "use-registered-suffix-pattern": "false # Whether suffix pattern matching should work only against extensions registered with \"spring.mvc.contentnegotiation.media-types.*\".",
+        "use-suffix-pattern": "false # Whether to use suffix pattern match (\".*\") when matching patterns to requests."
+      },
+      "contentnegotiation": {
+        "parameter-name": "# Query parameter name to use when \"favor-parameter\" is enabled.",
+        "media-types": {
+          "*": "# Map file extensions to media types for content negotiation. For instance, yml to text/yaml."
+        },
+        "favor-path-extension": "false # Whether the path extension in the URL path should be used to determine the requested media type.",
+        "favor-parameter": "false # Whether a request parameter (\"format\" by default) should be used to determine the requested media type."
+      },
+      "favicon": {
+        "enabled": "true # Whether to enable resolution of favicon.ico."
+      },
+      "formcontent": {
+        "filter": {
+          "enabled": "true # Whether to enable Spring's FormContentFilter."
+        }
+      },
+      "ignore-default-model-on-redirect": "true # Whether the content of the \"default\" model should be ignored during redirect scenarios.",
+      "throw-exception-if-no-handler-found": "false # Whether a \"NoHandlerFoundException\" should be thrown if no Handler was found to process a request.",
+      "log-resolved-exception": "false # Whether to enable warn logging of exceptions resolved by a \"HandlerExceptionResolver\", except for \"DefaultHandlerExceptionResolver\".",
+      "dispatch-trace-request": "false # Whether to dispatch TRACE requests to the FrameworkServlet doService method.",
+      "async": {
+        "request-timeout": "# Amount of time before asynchronous request handling times out."
+      },
+      "dispatch-options-request": "true # Whether to dispatch OPTIONS requests to the FrameworkServlet doService method.",
+      "hiddenmethod": {
+        "filter": {
+          "enabled": "true # Whether to enable Spring's HiddenHttpMethodFilter."
+        }
+      },
+      "view": {
+        "prefix": "# Spring MVC view prefix.",
+        "suffix": "# Spring MVC view suffix."
+      },
+      "message-codes-resolver-format": "# Formatting strategy for message codes. For instance, `PREFIX_ERROR_CODE`.",
+      "locale": "# Locale to use. By default, this locale is overridden by the \"Accept-Language\" header.",
+      "date-format": "# Date format to use. For instance, `dd/MM/yyyy`.",
+      "static-path-pattern": "/** # Path pattern used for static resources.",
+      "locale-resolver": "accept-header # Define how the locale should be resolved."
+    },
+    "hazelcast": {
+      "config": "# The location of the configuration file to use to initialize Hazelcast."
+    },
+    "groovy": {
+      "template": {
+        "expose-spring-macro-helpers": "true # Whether to expose a RequestContext for use by Spring's macro library, under the name \"springMacroRequestContext\".",
+        "check-template-location": "true # Whether to check that the templates location exists.",
+        "allow-session-override": "false # Whether HttpSession attributes are allowed to override (hide) controller generated model attributes of the same name.",
+        "suffix": ".tpl # Suffix that gets appended to view names when building a URL.",
+        "view-names": "# White list of view names that can be resolved.",
+        "configuration": {
+          "*": "# See GroovyMarkupConfigurer"
+        },
+        "enabled": "true # Whether to enable MVC view resolution for this technology.",
+        "expose-request-attributes": "false # Whether all request attributes should be added to the model prior to merging with the template.",
+        "request-context-attribute": "# Name of the RequestContext attribute for all views.",
+        "expose-session-attributes": "false # Whether all HttpSession attributes should be added to the model prior to merging with the template.",
+        "prefix": "# Prefix that gets prepended to view names when building a URL.",
+        "resource-loader-path": "classpath:/templates/ # Template path.",
+        "charset": "UTF-8 # Template encoding.",
+        "content-type": "text/html # Content-Type value.",
+        "cache": "false # Whether to enable template caching.",
+        "allow-request-override": "false # Whether HttpServletRequest attributes are allowed to override (hide) controller generated model attributes of the same name."
+      }
+    },
+    "mandatory-file-encoding": "# Expected character encoding the application must use.",
+    "messages": {
+      "encoding": "UTF-8 # Message bundles encoding.",
+      "always-use-message-format": "false # Whether to always apply the MessageFormat rules, parsing even messages without arguments.",
+      "cache-duration": "# Loaded resource bundle files cache duration. When not set, bundles are cached forever. If a duration suffix is not specified, seconds will be used.",
+      "basename": "messages # Comma-separated list of basenames (essentially a fully-qualified classpath location), each following the ResourceBundle convention with relaxed support for slash based locations.",
+      "use-code-as-default-message": "false # Whether to use the message code as the default message instead of throwing a \"NoSuchMessageException\". Recommended during development only.",
+      "fallback-to-system-locale": "true # Whether to fall back to the system Locale if no files for a specific Locale have been found."
+    },
+    "activemq": {
+      "pool": {
+        "max-connections": "1 # Maximum number of pooled connections.",
+        "max-sessions-per-connection": "500 # Maximum number of pooled sessions per connection in the pool.",
+        "use-anonymous-producers": "true # Whether to use only one anonymous \"MessageProducer\" instance. Set it to false to create one \"MessageProducer\" every time one is required.",
+        "time-between-expiration-check": "-1ms # Time to sleep between runs of the idle connection eviction thread. When negative, no idle connection eviction thread runs.",
+        "idle-timeout": "30s # Connection idle timeout.",
+        "block-if-full": "true # Whether to block when a connection is requested and the pool is full. Set it to false to throw a \"JMSException\" instead.",
+        "block-if-full-timeout": "-1ms # Blocking period before throwing an exception if the pool is still full.",
+        "enabled": "false # Whether a JmsPoolConnectionFactory should be created, instead of a regular ConnectionFactory."
+      },
+      "send-timeout": "0ms # Time to wait on message sends for a response. Set it to 0 to wait forever.",
+      "broker-url": "# URL of the ActiveMQ broker. Auto-generated by default.",
+      "in-memory": "true # Whether the default broker URL should be in memory. Ignored if an explicit broker has been specified.",
+      "non-blocking-redelivery": "false # Whether to stop message delivery before re-delivering messages from a rolled back transaction. This implies that message order is not preserved when this is enabled.",
+      "user": "# Login user of the broker.",
+      "password": "# Login password of the broker.",
+      "packages": {
+        "trusted": "# Comma-separated list of specific packages to trust (when not trusting all packages).",
+        "trust-all": "# Whether to trust all packages."
+      },
+      "close-timeout": "15s # Time to wait before considering a close complete."
+    },
+    "freemarker": {
+      "check-template-location": "true # Whether to check that the templates location exists.",
+      "request-context-attribute": "# Name of the RequestContext attribute for all views.",
+      "expose-spring-macro-helpers": "true # Whether to expose a RequestContext for use by Spring's macro library, under the name \"springMacroRequestContext\".",
+      "view-names": "# White list of view names that can be resolved.",
+      "settings": {
+        "*": "# Well-known FreeMarker keys which are passed to FreeMarker's Configuration."
+      },
+      "template-loader-path": "classpath:/templates/ # Comma-separated list of template paths.",
+      "suffix": ".ftl # Suffix that gets appended to view names when building a URL.",
+      "cache": "false # Whether to enable template caching.",
+      "allow-request-override": "false # Whether HttpServletRequest attributes are allowed to override (hide) controller generated model attributes of the same name.",
+      "expose-session-attributes": "false # Whether all HttpSession attributes should be added to the model prior to merging with the template.",
+      "charset": "UTF-8 # Template encoding.",
+      "content-type": "text/html # Content-Type value.",
+      "expose-request-attributes": "false # Whether all request attributes should be added to the model prior to merging with the template.",
+      "enabled": "true # Whether to enable MVC view resolution for this technology.",
+      "allow-session-override": "false # Whether HttpSession attributes are allowed to override (hide) controller generated model attributes of the same name.",
+      "prefer-file-system-access": "true # Whether to prefer file system access for template loading. File system access enables hot detection of template changes.",
+      "prefix": "# Prefix that gets prepended to view names when building a URL."
+    },
+    "cache": {
+      "caffeine": {
+        "spec": "# The spec to use to create caches. See CaffeineSpec for more details on the spec format."
+      },
+      "jcache": {
+        "config": "# The location of the configuration file to use to initialize the cache manager.",
+        "provider": "# Fully qualified name of the CachingProvider implementation to use to retrieve the JSR-107 compliant cache manager. Needed only if more than one JSR-107 implementation is available on the classpath."
+      },
+      "infinispan": {
+        "config": "# The location of the configuration file to use to initialize Infinispan."
+      },
+      "cache-names": "# Comma-separated list of cache names to create if supported by the underlying cache manager.",
+      "couchbase": {
+        "expiration": "# Entry expiration. By default the entries never expire. Note that this value is ultimately converted to seconds."
+      },
+      "redis": {
+        "time-to-live": "# Entry expiration. By default the entries never expire.",
+        "cache-null-values": "true # Allow caching null values.",
+        "key-prefix": "# Key prefix.",
+        "use-key-prefix": "true # Whether to use the key prefix when writing to Redis."
+      },
+      "type": "# Cache type. By default, auto-detected according to the environment.",
+      "ehcache": {
+        "config": "# The location of the configuration file to use to initialize EhCache."
+      }
+    },
+    "servlet": {
+      "multipart": {
+        "max-file-size": "1MB # Max file size.",
+        "file-size-threshold": "0B # Threshold after which files are written to disk.",
+        "enabled": "true # Whether to enable support of multipart uploads.",
+        "resolve-lazily": "false # Whether to resolve the multipart request lazily at the time of file or parameter access.",
+        "max-request-size": "10MB # Max request size.",
+        "location": "# Intermediate location of uploaded files."
+      }
+    },
+    "security": {
+      "user": {
+        "roles": "# Granted roles for the default user name.",
+        "name": "user # Default user name.",
+        "password": "# Password for the default user name."
+      },
+      "oauth2": {
+        "resourceserver": {
+          "jwt": {
+            "issuer-uri": "# URI that an OpenID Connect Provider asserts as its Issuer Identifier.",
+            "jwk-set-uri": "# JSON Web Key URI to use to verify the JWT token."
+          }
+        },
+        "client": {
+          "provider": {
+            "*": "# OAuth provider details."
+          },
+          "registration": {
+            "*": "# OAuth client registrations."
+          }
+        }
+      },
+      "filter": {
+        "dispatcher-types": "async,error,request # Security filter chain dispatcher types.",
+        "order": "-100 # Security filter chain order."
+      }
+    },
+    "jms": {
+      "cache": {
+        "enabled": "true # Whether to cache sessions.",
+        "session-cache-size": "1 # Size of the session cache (per JMS Session type).",
+        "consumers": "false # Whether to cache message consumers.",
+        "producers": "true # Whether to cache message producers."
+      },
+      "listener": {
+        "max-concurrency": "# Maximum number of concurrent consumers.",
+        "acknowledge-mode": "# Acknowledge mode of the container. By default, the listener is transacted with automatic acknowledgment.",
+        "auto-startup": "true # Start the container automatically on startup.",
+        "concurrency": "# Minimum number of concurrent consumers."
+      },
+      "template": {
+        "delivery-delay": "# Delivery delay to use for send calls.",
+        "qos-enabled": "# Whether to enable explicit QoS (Quality of Service) when sending a message.",
+        "priority": "# Priority of a message when sending. Enables QoS (Quality of Service) when set.",
+        "time-to-live": "# Time-to-live of a message when sending. Enables QoS (Quality of Service) when set.",
+        "default-destination": "# Default destination to use on send and receive operations that do not have a destination parameter.",
+        "receive-timeout": "# Timeout to use for receive calls.",
+        "delivery-mode": "# Delivery mode. Enables QoS (Quality of Service) when set."
+      },
+      "pub-sub-domain": "false # Whether the default destination type is topic.",
+      "jndi-name": "# Connection factory JNDI name. When set, takes precedence to others connection factory auto-configurations."
+    },
+    "jackson": {
+      "joda-date-time-format": "# Joda date time format string. If not configured, \"date-format\" is used as a fallback if it is configured with a format string.",
+      "default-property-inclusion": "# Controls the inclusion of properties during serialization. Configured with one of the values in Jackson's JsonInclude.Include enumeration.",
+      "deserialization": {
+        "*": "# Jackson on/off features that affect the way Java objects are deserialized."
+      },
+      "generator": {
+        "*": "# Jackson on/off features for generators."
+      },
+      "property-naming-strategy": "# One of the constants on Jackson's PropertyNamingStrategy. Can also be a fully-qualified class name of a PropertyNamingStrategy subclass.",
+      "visibility": {
+        "*": "# Jackson visibility thresholds that can be used to limit which methods (and fields) are auto-detected."
+      },
+      "locale": "# Locale used for formatting.",
+      "serialization": {
+        "*": "# Jackson on/off features that affect the way Java objects are serialized."
+      },
+      "date-format": "# Date format string or a fully-qualified date format class name. For instance, `yyyy-MM-dd HH:mm:ss`.",
+      "parser": {
+        "*": "# Jackson on/off features for parsers."
+      },
+      "mapper": {
+        "*": "# Jackson general purpose on/off features."
+      },
+      "time-zone": "#  Time zone used when formatting dates. For instance, \"America/Los_Angeles\" or \"GMT+10\"."
+    },
+    "couchbase": {
+      "bucket": {
+        "name": "default # Name of the bucket to connect to.",
+        "password": "# Password of the bucket."
+      },
+      "env": {
+        "ssl": {
+          "key-store-password": "# Password used to access the key store.",
+          "enabled": "# Whether to enable SSL support. Enabled automatically if a \"keyStore\" is provided unless specified otherwise.",
+          "key-store": "# Path to the JVM key store that holds the certificates."
+        },
+        "timeouts": {
+          "query": "7500ms # N1QL query operations timeout.",
+          "socket-connect": "1000ms # Socket connect connections timeout.",
+          "key-value": "2500ms # Blocking operations performed on a specific key timeout.",
+          "connect": "5000ms # Bucket connections timeouts.",
+          "view": "7500ms # Regular and geospatial view operations timeout."
+        },
+        "endpoints": {
+          "queryservice": {
+            "max-endpoints": "1 # Maximum number of sockets per node.",
+            "min-endpoints": "1 # Minimum number of sockets per node."
+          },
+          "viewservice": {
+            "max-endpoints": "1 # Maximum number of sockets per node.",
+            "min-endpoints": "1 # Minimum number of sockets per node."
+          },
+          "key-value": "1 # Number of sockets per node against the key/value service."
+        }
+      },
+      "bootstrap-hosts": "# Couchbase nodes (host or IP address) to bootstrap from."
+    },
+    "jersey": {
+      "type": "servlet # Jersey integration type.",
+      "servlet": {
+        "load-on-startup": "-1 # Load on startup priority of the Jersey servlet."
+      },
+      "filter": {
+        "order": "0 # Jersey filter chain order."
+      },
+      "init": {
+        "*": "# Init parameters to pass to Jersey through the servlet or filter."
+      },
+      "application-path": "# Path that serves as the base URI for the application. If specified, overrides the value of \"@ApplicationPath\"."
+    },
+    "profiles": {
+      "include": "# Unconditionally activate the specified comma-separated list of profiles (or list of profiles if using YAML).",
+      "active": "# Comma-separated list of active profiles. Can be overridden by a command line switch."
+    },
+    "banner": {
+      "image": {
+        "location": "classpath:banner.gif # Banner image file location (jpg or png can also be used).",
+        "width": "76 # Width of the banner image in chars.",
+        "invert": "false # Whether images should be inverted for dark terminal themes.",
+        "height": "# Height of the banner image in chars (default based on image height).",
+        "margin": "2 # Left hand image margin in chars."
+      },
+      "charset": "UTF-8 # Banner file encoding.",
+      "location": "classpath:banner.txt # Banner text resource location."
+    },
+    "reactor": {
+      "stacktrace-mode": {
+        "enabled": "false # Whether Reactor should collect stacktrace information at runtime."
+      }
+    },
+    "task": {
+      "execution": {
+        "pool": {
+          "max-size": "# Maximum allowed number of threads. If tasks are filling up the queue, the pool can expand up to that size to accommodate the load. Ignored if the queue is unbounded.",
+          "keep-alive": "60s # Time limit for which threads may remain idle before being terminated.",
+          "allow-core-thread-timeout": "true # Whether core threads are allowed to time out. This enables dynamic growing and shrinking of the pool.",
+          "queue-capacity": "# Queue capacity. An unbounded capacity does not increase the pool and therefore ignores the \"max-size\" property.",
+          "core-size": "8 # Core number of threads."
+        },
+        "thread-name-prefix": "task- # Prefix to use for the names of newly created threads."
+      },
+      "scheduling": {
+        "thread-name-prefix": "scheduling- # Prefix to use for the names of newly created threads.",
+        "pool": {
+          "size": "1 # Maximum allowed number of threads."
+        }
+      }
+    },
+    "sendgrid": {
+      "api-key": "# SendGrid API key.",
+      "proxy": {
+        "port": "# SendGrid proxy port.",
+        "host": "# SendGrid proxy host."
+      }
+    },
+    "batch": {
+      "schema": "classpath:org/springframework/batch/core/schema-@@platform@@.sql # Path to the SQL file to use to initialize the database schema.",
+      "table-prefix": "# Table prefix for all the batch meta-data tables.",
+      "initialize-schema": "embedded # Database schema initialization mode.",
+      "job": {
+        "names": "# Comma-separated list of job names to execute on startup (for instance, `job1,job2`). By default, all Jobs found in the context are executed.",
+        "enabled": "true # Execute all Spring Batch jobs in the context on startup."
+      }
+    },
+    "h2": {
+      "console": {
+        "settings": {
+          "web-allow-others": "false # Whether to enable remote access.",
+          "trace": "false # Whether to enable trace output."
+        },
+        "enabled": "false # Whether to enable the console.",
+        "path": "/h2-console # Path at which the console is available."
+      }
+    },
+    "jdbc": {
+      "template": {
+        "max-rows": "-1 # Maximum number of rows.",
+        "query-timeout": "# Query timeout. Default is to use the JDBC driver's default configuration. If a duration suffix is not specified, seconds will be used.",
+        "fetch-size": "-1 # Number of rows that should be fetched from the database when more rows are needed."
+      }
+    },
+    "influx": {
+      "url": "# URL of the InfluxDB instance to which to connect.",
+      "password": "# Login password.",
+      "user": "# Login user."
+    },
+    "autoconfigure": {
+      "exclude": "# Auto-configuration classes to exclude."
+    },
+    "transaction": {
+      "rollback-on-commit-failure": "# Whether to roll back on commit failures.",
+      "default-timeout": "# Default transaction timeout. If a duration suffix is not specified, seconds will be used."
+    },
+    "pid": {
+      "fail-on-write-error": "# Fails if ApplicationPidFileWriter is used but it cannot write the PID file.",
+      "file": "# Location of the PID file to write (if ApplicationPidFileWriter is used)."
+    },
+    "jmx": {
+      "server": "mbeanServer # MBeanServer bean name.",
+      "unique-names": "false # Whether unique runtime object names should be ensured.",
+      "default-domain": "# JMX domain name.",
+      "enabled": "true # Expose management beans to the JMX domain."
+    },
+    "mongodb": {
+      "embedded": {
+        "storage": {
+          "database-dir": "# Directory used for data storage.",
+          "oplog-size": "# Maximum size of the oplog.",
+          "repl-set-name": "# Name of the replica set."
+        },
+        "features": "sync_delay # Comma-separated list of features to enable.",
+        "version": "3.5.5 # Version of Mongo to use."
+      }
+    },
+    "beaninfo": {
+      "ignore": "true # Whether to skip search of BeanInfo classes."
+    },
+    "webflux": {
+      "static-path-pattern": "/** # Path pattern used for static resources.",
+      "date-format": "# Date format to use. For instance, `dd/MM/yyyy`.",
+      "hiddenmethod": {
+        "filter": {
+          "enabled": "true # Whether to enable Spring's HiddenHttpMethodFilter."
+        }
+      }
+    },
+    "config": {
+      "location": "# Config file locations that replace the defaults.",
+      "name": "application # Config file name.",
+      "additional-location": "# Config file locations used in addition to the defaults."
+    },
+    "integration": {
+      "jdbc": {
+        "initialize-schema": "embedded # Database schema initialization mode.",
+        "schema": "classpath:org/springframework/integration/jdbc/schema-@@platform@@.sql # Path to the SQL file to use to initialize the database schema."
+      }
+    },
+    "webservices": {
+      "wsdl-locations": "# Comma-separated list of locations of WSDLs and accompanying XSDs to be exposed as beans.",
+      "servlet": {
+        "init": "# Servlet init parameters to pass to Spring Web Services.",
+        "load-on-startup": "-1 # Load on startup priority of the Spring Web Services servlet."
+      },
+      "path": "/services # Path that serves as the base URI for the services."
+    },
+    "jooq": {
+      "sql-dialect": "# SQL dialect to use. Auto-detected by default."
+    },
+    "aop": {
+      "auto": "true # Add @EnableAspectJAutoProxy.",
+      "proxy-target-class": "true # Whether subclass-based (CGLIB) proxies are to be created (true), as opposed to standard Java interface-based proxies (false)."
+    },
+    "dao": {
+      "exceptiontranslation": {
+        "enabled": "true # Whether to enable the PersistenceExceptionTranslationPostProcessor."
+      }
+    },
+    "output": {
+      "ansi": {
+        "enabled": "detect # Configures the ANSI output."
+      }
+    }
+  },
+  "server": {
+    "http2": {
+      "enabled": "false # Whether to enable HTTP/2 support, if the current environment supports it."
+    },
+    "undertow": {
+      "max-http-post-size": "-1B # Maximum size of the HTTP post content. When the value is -1, the default, the size is unlimited.",
+      "buffer-size": "# Size of each buffer.",
+      "accesslog": {
+        "suffix": "log # Log file name suffix.",
+        "rotate": "true # Whether to enable access log rotation.",
+        "prefix": "access_log. # Log file name prefix.",
+        "dir": "# Undertow access log directory.",
+        "enabled": "false # Whether to enable the access log.",
+        "pattern": "common # Format pattern for access logs."
+      },
+      "eager-filter-init": "true # Whether servlet filters should be initialized on startup.",
+      "io-threads": "# Number of I/O threads to create for the worker. The default is derived from the number of available processors.",
+      "worker-threads": "# Number of worker threads. The default is 8 times the number of I/O threads.",
+      "no-request-timeout": "# Amount of time a connection can sit idle without processing a request, before it is closed by the server.",
+      "direct-buffers": "# Whether to allocate buffers outside the Java heap. The default is derived from the maximum amount of memory that is available to the JVM."
+    },
+    "tomcat": {
+      "accesslog": {
+        "suffix": ".log # Log file name suffix.",
+        "rotate": "true # Whether to enable access log rotation.",
+        "prefix": "access_log # Log file name prefix.",
+        "buffered": "true # Whether to buffer output such that it is flushed only periodically.",
+        "rename-on-rotate": "false # Whether to defer inclusion of the date stamp in the file name until rotate time.",
+        "request-attributes-enabled": "false # Set request attributes for the IP address, Hostname, protocol, and port used for the request.",
+        "directory": "logs # Directory in which log files are created. Can be absolute or relative to the Tomcat base dir.",
+        "enabled": "false # Enable access log.",
+        "file-date-format": ".yyyy-MM-dd # Date format to place in the log file name.",
+        "pattern": "common # Format pattern for access logs."
+      },
+      "basedir": "# Tomcat base directory. If not specified, a temporary directory is used.",
+      "max-connections": "10000 # Maximum number of connections that the server accepts and processes at any given time.",
+      "connection-timeout": "# Amount of time the connector will wait, after accepting a connection, for the request URI line to be presented.",
+      "max-swallow-size": "2MB # Maximum amount of request body to swallow.",
+      "remote-ip-header": "# Name of the HTTP header from which the remote IP is extracted. For instance, `X-FORWARDED-FOR`.",
+      "additional-tld-skip-patterns": "# Comma-separated list of additional patterns that match jars to ignore for TLD scanning.",
+      "uri-encoding": "UTF-8 # Character encoding to use to decode the URI.",
+      "resource": {
+        "allow-caching": "true # Whether static resource caching is permitted for this web application.",
+        "cache-ttl": "# Time-to-live of the static resource cache."
+      },
+      "protocol-header": "# Header that holds the incoming protocol, usually named \"X-Forwarded-Proto\".",
+      "accept-count": "100 # Maximum queue length for incoming connection requests when all possible request processing threads are in use.",
+      "redirect-context-root": "true # Whether requests to the context root should be redirected by appending a / to the path.",
+      "max-threads": "200 # Maximum amount of worker threads.",
+      "background-processor-delay": "10s # Delay between the invocation of backgroundProcess methods. If a duration suffix is not specified, seconds will be used.",
+      "internal-proxies": "10\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}|\\",
+      "protocol-header-https-value": "https # Value of the protocol header indicating whether the incoming request uses SSL.",
+      "port-header": "X-Forwarded-Port # Name of the HTTP header used to override the original port value.",
+      "use-relative-redirects": "# Whether HTTP 1.1 and later location headers generated by a call to sendRedirect will use relative or absolute redirects.",
+      "min-spare-threads": "10 # Minimum amount of worker threads.",
+      "max-http-post-size": "2MB # Maximum size of the HTTP post content."
+    },
+    "jetty": {
+      "accesslog": {
+        "file-date-format": "# Date format to place in log file name.",
+        "filename": "# Log filename. If not specified, logs redirect to \"System.err\".",
+        "time-zone": "GMT # Timezone of the request log.",
+        "date-format": "dd/MMM/yyyy:HH:mm:ss Z # Timestamp format of the request log.",
+        "log-cookies": "false # Enable logging of the request cookies.",
+        "append": "false # Append to log.",
+        "retention-period": "31 # Number of days before rotated log files are deleted.",
+        "log-latency": "false # Enable logging of request processing time.",
+        "enabled": "false # Enable access log.",
+        "log-server": "false # Enable logging of the request hostname.",
+        "locale": "# Locale of the request log.",
+        "extended-format": "false # Enable extended NCSA format."
+      },
+      "connection-idle-timeout": "# Time that the connection can be idle before it is closed.",
+      "acceptors": "-1 # Number of acceptor threads to use. When the value is -1, the default, the number of acceptors is derived from the operating environment.",
+      "selectors": "-1 # Number of selector threads to use. When the value is -1, the default, the number of selectors is derived from the operating environment.",
+      "max-http-post-size": "200000B # Maximum size of the HTTP post or put content."
+    },
+    "ssl": {
+      "key-alias": "# Alias that identifies the key in the key store.",
+      "protocol": "TLS # SSL protocol to use.",
+      "enabled-protocols": "# Enabled SSL protocols.",
+      "key-password": "# Password used to access the key in the key store.",
+      "key-store": "# Path to the key store that holds the SSL certificate (typically a jks file).",
+      "trust-store": "# Trust store that holds SSL certificates.",
+      "key-store-password": "# Password used to access the key store.",
+      "key-store-provider": "# Provider for the key store.",
+      "trust-store-type": "# Type of the trust store.",
+      "enabled": "true # Whether to enable SSL support.",
+      "trust-store-password": "# Password used to access the trust store.",
+      "client-auth": "# Client authentication mode.",
+      "ciphers": "# Supported SSL ciphers.",
+      "key-store-type": "# Type of the key store.",
+      "trust-store-provider": "# Provider for the trust store."
+    },
+    "compression": {
+      "min-response-size": "2KB # Minimum \"Content-Length\" value that is required for compression to be performed.",
+      "excluded-user-agents": "# Comma-separated list of user agents for which responses should not be compressed.",
+      "enabled": "false # Whether response compression is enabled.",
+      "mime-types": "text/html,text/xml,text/plain,text/css,text/javascript,application/javascript,application/json,application/xml # Comma-separated list of MIME types that should be compressed."
+    },
+    "servlet": {
+      "session": {
+        "store-dir": "# Directory used to store session data.",
+        "persistent": "false # Whether to persist session data between restarts.",
+        "cookie": {
+          "comment": "# Comment for the session cookie.",
+          "name": "# Session cookie name.",
+          "path": "# Path of the session cookie.",
+          "domain": "# Domain for the session cookie.",
+          "http-only": "# Whether to use \"HttpOnly\" cookies for session cookies.",
+          "secure": "# Whether to always mark the session cookie as secure.",
+          "max-age": "# Maximum age of the session cookie. If a duration suffix is not specified, seconds will be used."
+        },
+        "tracking-modes": "# Session tracking modes.",
+        "timeout": "30m # Session timeout. If a duration suffix is not specified, seconds will be used."
+      },
+      "context-parameters": {
+        "*": "# Servlet context init parameters."
+      },
+      "jsp": {
+        "registered": "true # Whether the JSP servlet is registered.",
+        "init-parameters": {
+          "*": "# Init parameters used to configure the JSP servlet."
+        },
+        "class-name": "org.apache.jasper.servlet.JspServlet # Class name of the servlet to use for JSPs."
+      },
+      "application-display-name": "application # Display name of the application.",
+      "context-path": "# Context path of the application."
+    },
+    "error": {
+      "include-exception": "false # Include the \"exception\" attribute.",
+      "include-stacktrace": "never # When to include a \"stacktrace\" attribute.",
+      "whitelabel": {
+        "enabled": "true # Whether to enable the default error page displayed in browsers in case of a server error."
+      },
+      "path": "/error # Path of the error controller."
+    },
+    "max-http-header-size": "8KB # Maximum size of the HTTP message header.",
+    "address": "# Network address to which the server should bind.",
+    "port": "8080 # Server HTTP port.",
+    "use-forward-headers": "# Whether X-Forwarded-* headers should be applied to the HttpRequest.",
+    "connection-timeout": "# Time that connectors wait for another HTTP request before closing the connection. When not set, the connector's container-specific default is used. Use a value of -1 to indicate no (that is, an infinite) timeout.",
+    "netty": {
+      "connection-timeout": "# Connection timeout of the Netty channel."
+    },
+    "server-header": "# Value to use for the Server response header (if empty, no header is sent)."
+  },
+  "172\\": {
+    "1[6-9]{1}\\": {
+      "\\d{1,3}\\": {
+        "\\d{1,3}|\\": ""
+      }
+    },
+    "3[0-1]{1}\\": {
+      "\\d{1,3}\\": {
+        "\\d{1,3}\\": ""
+      }
+    },
+    "2[0-9]{1}\\": {
+      "\\d{1,3}\\": {
+        "\\d{1,3}|\\": ""
+      }
+    }
+  },
+  "logging": {
+    "file": {
+      "nodeValue": "# Log file name (for instance, `myapp.log`). Names can be an exact location or relative to the current directory.",
+      "max-history": "0 # Maximum of archive log files to keep. Only supported with the default logback setup.",
+      "max-size": "10MB # Maximum log file size. Only supported with the default logback setup."
+    },
+    "exception-conversion-word": "%wEx # Conversion word used when logging exceptions.",
+    "pattern": {
+      "level": "%5p # Appender pattern for log level. Supported only with the default Logback setup.",
+      "file": "# Appender pattern for output to a file. Supported only with the default Logback setup.",
+      "console": "# Appender pattern for output to the console. Supported only with the default Logback setup.",
+      "dateformat": "yyyy-MM-dd HH:mm:ss.SSS # Appender pattern for log date format. Supported only with the default Logback setup."
+    },
+    "path": "# Location of the log file. For instance, `/var/log`.",
+    "level": {
+      "*": "# Log levels severity mapping. For instance, `logging.level.org.springframework=DEBUG`."
+    },
+    "config": "# Location of the logging configuration file. For instance, `classpath:logback.xml` for Logback.",
+    "register-shutdown-hook": "false # Register a shutdown hook for the logging system when it is initialized.",
+    "group": {
+      "*": "# Log groups to quickly change multiple loggers at the same time. For instance, `logging.level.db=org.hibernate,org.springframework.jdbc`."
+    }
+  }
+]}
