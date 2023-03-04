@@ -29,7 +29,7 @@ ExecStop=/bin/kill -15 $MAINPID
 [Install]
 WantedBy=multi-user.target
 ```
-### still 1. example-of-fork.services
+### still 1. example-of-fork.service
 
 ```
 [Unit]
