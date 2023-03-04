@@ -1,0 +1,15 @@
+[Unit]
+Description=My Java forking service
+After=syslog.target network.target
+[Service]
+SuccessExitStatus=143
+User=appuser
+Group=appgroup
+
+Type=forking
+
+ExecStart=/path/to/wrapper
+ExecStop=/bin/kill -15 $MAINPID
+
+[Install]
+WantedBy=multi-user.target
